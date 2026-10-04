@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>YASHU FX — Admin Panel</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<section
+  class="login-section"
+  id="loginSection"
+>
+
+  <div class="login-card">
+
+    <div class="login-logo">
+      YF
+    </div>
+
+    <h1>
+      YASHU FX
+    </h1>
+
+    <p class="login-subtitle">
+      Admin Panel
+    </p>
+
+    <p class="login-welcome">
+      Welcome back
+    </p>
+
+
+    <form id="loginForm">
+
+      <div class="form-group">
+
+        <label for="email">
+          Email
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter admin email"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="password">
+          Password
+        </label>
+
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter password"
+          required
+        >
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="primary-button"
+      >
+        Sign In
+      </button>
+
+    </form>
+
+
+    <div
+      id="loginMessage"
+      class="login-message"
+    ></div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ADMIN DASHBOARD
+===================================================== -->
+
+<section
+  class="admin-section"
+  id="adminSection"
+  hidden
+>
+
+  <div class="admin-container">
+
+
+    <!-- =================================================
+         ADMIN HEADER
+    ================================================= -->
+
+    <div class="admin-header">
+
+      <div>
+
+        <div class="admin-brand">
+          YASHU FX
+        </div>
+
+        <div class="admin-panel-title">
+          Admin Panel
+        </div>
+
+      </div>
+
+
+      <button
+        type="button"
+        id="logoutButton"
+        class="logout-button"
+      >
+        Logout
+      </button>
+
+    </div>
+
+
+
+    <!-- =================================================
+         ADD TEMPLATE
+    ================================================= -->
+
+    <div class="admin-card">
+
+      <div class="admin-card-heading">
+
+        <div>
+
+          <h2>
+            Add Template
+          </h2>
+
+          <p>
+            Publish a new free template.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <form id="templateForm">
+
+
+        <!-- =============================================
+             THUMBNAIL
+        ============================================== -->
+
+        <div class="form-group">
+
+          <label>
+            Thumbnail
+          </label>
+
+
+          <label
+            class="thumbnail-upload"
+            for="thumbnail"
+          >
+
+            <div
+              class="upload-icon"
+              id="uploadIcon"
+            >
+              +
+            </div>
+
+            <div
+              class="upload-text"
+              id="uploadText"
+            >
+              Choose thumbnail
+            </div>
+
+            <input
+              type="file"
+              id="thumbnail"
+              accept="image/*"
+              hidden
+              required
+            >
+
+          </label>
+
+
+          <!-- THUMBNAIL PREVIEW -->
+
+          <div
+            class="thumbnail-preview"
+            id="thumbnailPreview"
+            hidden
+          >
+
+            <img
+              id="previewImage"
+              src=""
+              alt="Thumbnail preview"
+            >
+
+          </div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             TITLE
+        ============================================== -->
+
+        <div class="form-group">
+
+          <label for="title">
+            Title
+          </label>
+
+          <input
+            type="text"
+            id="title"
+            placeholder="Example: Velocity Beat Edit"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- =============================================
+             CATEGORY
+        ============================================== -->
+
+        <div class="form-group">
+
+          <label for="category">
+            Category
+          </label>
+
+          <select
+            id="category"
+            required
+          >
+
+            <option value="">
+              Select category
+            </option>
+
+            <option value="CapCut">
+              CapCut
+            </option>
+
+            <option value="Alight Motion">
+              Alight Motion
+            </option>
+
+            <option value="Velocity">
+              Velocity
+            </option>
+
+            <option value="Cinematic">
+              Cinematic
+            </option>
+
+            <option value="Beat Sync">
+              Beat Sync
+            </option>
+
+            <option value="Other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <!-- =============================================
+             DESCRIPTION
+        ============================================== -->
+
+        <div class="form-group">
+
+          <label for="description">
+            Description
+          </label>
+
+          <textarea
+            id="description"
+            rows="4"
+            placeholder="Write a short description..."
+            required
+          ></textarea>
+
+        </div>
+
+
+
+        <!-- =============================================
+             LINKS
+        ============================================== -->
+
+        <div class="links-section">
+
+          <div class="links-heading">
+
+            <div>
+
+              <label>
+                Links
+              </label>
+
+              <p>
+                Add the template link and any optional links.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div id="linksContainer">
+
+            <!-- FIRST REQUIRED LINK -->
+
+            <div class="link-row">
+
+              <div class="link-inputs">
+
+                <input
+                  type="text"
+                  class="link-label"
+                  placeholder="Link name"
+                  value="Template"
+                  required
+                >
+
+                <input
+                  type="url"
+                  class="link-url"
+                  placeholder="https://..."
+                  required
+                >
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <button
+            type="button"
+            id="addLinkButton"
+            class="add-link-button"
+          >
+            + Add another link
+          </button>
+
+        </div>
+
+
+
+        <!-- =============================================
+             ADD BUTTON
+        ============================================== -->
+
+        <button
+          type="submit"
+          class="primary-button"
+        >
+          Add Template
+        </button>
+
+
+        <div
+          id="templateMessage"
+          class="template-message"
+        ></div>
+
+
+      </form>
+
+    </div>
+
+
+
+    <!-- =================================================
+         MANAGE TEMPLATES
+    ================================================= -->
+
+    <div class="manage-templates-section">
+
+
+      <div class="manage-templates-heading">
+
+        <div>
+
+          <label>
+            Manage Templates
+          </label>
+
+          <p>
+            Edit or delete templates already published.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="templateList"
+        class="template-list"
+      >
+
+        <div class="template-list-message">
+          Loading templates...
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<!-- =====================================================
+     ADMIN JAVASCRIPT
+===================================================== -->
+
+<script
+  src="js/admin.js"
+></script>
+
+
+</body>
+
+</html>

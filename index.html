@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>YASHU FX — Free Templates for Creators</title>
+
+<style>
+
+/* =====================================================
+   YASHU FX
+   PUBLIC WEBSITE
+   Light + Dark Mode
+===================================================== */
+
+:root{
+
+    --bg:#f7f7f8;
+    --surface:#ffffff;
+    --surface2:#f1f1f3;
+
+    --text:#171717;
+    --muted:#777777;
+
+    --border:#e3e3e6;
+
+    --accent:#635bff;
+
+    --green:#218443;
+
+    --shadow:rgba(0,0,0,.07);
+
+}
+
+body.dark{
+
+    --bg:#111214;
+    --surface:#191a1e;
+    --surface2:#222328;
+
+    --text:#f4f4f5;
+    --muted:#a3a4aa;
+
+    --border:#303137;
+
+    --accent:#817aff;
+
+    --green:#55c878;
+
+    --shadow:rgba(0,0,0,.35);
+
+}
+
+
+/* =====================================================
+   BASIC
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    line-height:1.5;
+
+    transition:
+    background .25s ease,
+    color .25s ease;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+.container{
+
+    width:
+    min(1150px,calc(100% - 32px));
+
+    margin:auto;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+
+    background:var(--surface);
+
+    border-bottom:
+    1px solid var(--border);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    transition:
+    background .25s ease,
+    border-color .25s ease;
+}
+
+.navbar{
+
+    height:72px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    position:relative;
+}
+
+
+/* =====================================================
+   MENU BUTTON
+===================================================== */
+
+.menu-button{
+
+    width:42px;
+
+    height:42px;
+
+    border:
+    1px solid var(--border);
+
+    background:var(--surface);
+
+    border-radius:10px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:5px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.menu-button:hover{
+    border-color:var(--accent);
+}
+
+.menu-button span{
+
+    width:19px;
+
+    height:2px;
+
+    background:var(--text);
+
+    border-radius:10px;
+
+    transition:.2s;
+}
+
+
+/* =====================================================
+   CENTER LOGO
+===================================================== */
+
+.logo{
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:21px;
+
+    font-weight:800;
+
+    letter-spacing:-.7px;
+}
+
+.logo span{
+    color:var(--accent);
+}
+
+
+/* =====================================================
+   RIGHT HEADER
+===================================================== */
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+
+/* =====================================================
+   LOGO IMAGE
+===================================================== */
+
+.header-image{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    border:
+    1px solid var(--border);
+
+    background:var(--surface2);
+
+    flex-shrink:0;
+}
+
+.header-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+
+/* =====================================================
+   DARK MODE BUTTON
+===================================================== */
+
+.theme-button{
+
+    width:42px;
+
+    height:42px;
+
+    border:
+    1px solid var(--border);
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    border-radius:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.theme-button:hover{
+
+    border-color:var(--accent);
+
+    transform:translateY(-1px);
+}
+
+
+/* =====================================================
+   SIDE MENU
+===================================================== */
+
+.menu-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.28);
+
+    backdrop-filter:blur(2px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.2s;
+
+    z-index:150;
+}
+
+.menu-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+.side-menu{
+
+    position:fixed;
+
+    top:0;
+
+    left:-300px;
+
+    width:285px;
+
+    height:100vh;
+
+    background:var(--surface);
+
+    z-index:200;
+
+    padding:24px;
+
+    box-shadow:
+    10px 0 40px var(--shadow);
+
+    transition:.25s;
+}
+
+.side-menu.active{
+    left:0;
+}
+
+.menu-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding-bottom:25px;
+
+    border-bottom:
+    1px solid var(--border);
+}
+
+.menu-title{
+
+    font-size:18px;
+
+    font-weight:800;
+}
+
+.close-menu{
+
+    width:36px;
+
+    height:36px;
+
+    border:
+    1px solid var(--border);
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    border-radius:9px;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+.menu-links{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-top:25px;
+}
+
+.menu-links a{
+
+    padding:15px 5px;
+
+    border-bottom:
+    1px solid var(--border);
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:var(--text);
+
+    transition:.2s;
+}
+
+.menu-links a:hover{
+    color:var(--accent);
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-section{
+    padding:32px 0 10px;
+}
+
+.search-box{
+
+    height:64px;
+
+    background:var(--surface);
+
+    border:
+    1px solid var(--border);
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:0 18px;
+
+    box-shadow:
+    0 5px 20px var(--shadow);
+
+    transition:.25s;
+}
+
+.search-icon{
+
+    font-size:22px;
+
+    color:var(--muted);
+}
+
+.search-input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:15px;
+
+    color:var(--text);
+}
+
+.search-input::placeholder{
+    color:var(--muted);
+}
+
+.clear-search{
+
+    display:none;
+
+    border:none;
+
+    background:var(--surface2);
+
+    color:var(--text);
+
+    padding:6px 10px;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    font-size:11px;
+}
+
+
+/* =====================================================
+   TEMPLATE SECTION
+===================================================== */
+
+.section{
+    padding:40px 0 60px;
+}
+
+.section-heading{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:end;
+
+    margin-bottom:22px;
+}
+
+.section-label{
+
+    color:var(--accent);
+
+    font-size:11px;
+
+    font-weight:800;
+
+    letter-spacing:1.4px;
+
+    text-transform:uppercase;
+}
+
+.section h2{
+
+    font-size:31px;
+
+    letter-spacing:-1.5px;
+
+    margin-top:4px;
+}
+
+.result-text{
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+
+/* =====================================================
+   TEMPLATE CARDS
+===================================================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:18px;
+}
+
+.card{
+
+    background:var(--surface);
+
+    border:
+    1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    transition:.2s;
+}
+
+.card:hover{
+
+    transform:
+    translateY(-3px);
+
+    box-shadow:
+    0 12px 30px var(--shadow);
+}
+
+
+/* =====================================================
+   THUMBNAIL
+===================================================== */
+
+.thumbnail{
+
+    aspect-ratio:16/10;
+
+    background:var(--surface2);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+}
+
+.thumbnail img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.thumbnail-placeholder{
+
+    color:var(--muted);
+
+    font-size:23px;
+
+    font-weight:800;
+}
+
+
+/* =====================================================
+   CARD CONTENT
+===================================================== */
+
+.card-body{
+    padding:16px;
+}
+
+.card-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:8px;
+}
+
+.category{
+
+    color:var(--accent);
+
+    font-size:10px;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.8px;
+}
+
+.free{
+
+    color:var(--green);
+
+    background:
+    rgba(33,132,67,.10);
+
+    padding:4px 7px;
+
+    border-radius:5px;
+
+    font-size:9px;
+
+    font-weight:800;
+}
+
+.card h3{
+
+    font-size:16px;
+
+    margin-bottom:6px;
+}
+
+.card p{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    min-height:36px;
+
+    margin-bottom:14px;
+}
+
+
+/* =====================================================
+   CARD LINKS
+===================================================== */
+
+.card-links{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+}
+
+.card-button{
+
+    display:block;
+
+    width:100%;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    padding:9px 10px;
+
+    border:
+    1px solid var(--border);
+
+    border-radius:8px;
+
+    background:var(--surface2);
+
+    transition:.2s;
+}
+
+.card-button:hover{
+
+    color:var(--accent);
+
+    border-color:var(--accent);
+}
+
+
+/* =====================================================
+   NO RESULTS / LOADING
+===================================================== */
+
+.no-results{
+
+    display:none;
+
+    padding:40px;
+
+    text-align:center;
+
+    background:var(--surface);
+
+    border:
+    1px dashed var(--border);
+
+    border-radius:15px;
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+.loading-message{
+
+    grid-column:1/-1;
+
+    padding:40px;
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+
+/* =====================================================
+   ABOUT / CONTACT
+===================================================== */
+
+.info-section{
+    padding:50px 0;
+}
+
+.info-section p{
+
+    max-width:600px;
+
+    margin-top:12px;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    background:var(--surface);
+
+    border-top:
+    1px solid var(--border);
+
+    padding:28px 0;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    transition:.25s;
+}
+
+.footer{
+
+    display:flex;
+
+    justify-content:space-between;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:850px){
+
+    .cards{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .container{
+
+        width:
+        calc(100% - 22px);
+    }
+
+    .navbar{
+        height:65px;
+    }
+
+    .logo{
+        font-size:19px;
+    }
+
+    .header-right{
+        gap:6px;
+    }
+
+    .header-image,
+    .theme-button,
+    .menu-button{
+
+        width:39px;
+
+        height:39px;
+    }
+
+    .search-box{
+        height:58px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .section-heading{
+        display:block;
+    }
+
+    .result-text{
+        margin-top:5px;
+    }
+
+    .footer{
+        display:block;
+    }
+
+}
+
+
+@media(max-width:380px){
+
+    .logo{
+        font-size:17px;
+    }
+
+    .header-image,
+    .theme-button,
+    .menu-button{
+
+        width:36px;
+
+        height:36px;
+    }
+
+    .header-right{
+        gap:4px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<div class="container navbar">
+
+
+<button
+class="menu-button"
+id="menuButton"
+aria-label="Open menu"
+>
+
+<span></span>
+<span></span>
+<span></span>
+
+</button>
+
+
+<a
+href="#"
+class="logo"
+>
+YASHU <span>FX</span>
+</a>
+
+
+<div class="header-right">
+
+
+<button
+class="theme-button"
+id="themeButton"
+aria-label="Switch theme"
+title="Switch theme"
+>
+☀
+</button>
+
+
+<div class="header-image">
+
+<img
+src="assets/logo/logo.png"
+alt="YASHU FX"
+>
+
+</div>
+
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
+
+<div
+class="menu-overlay"
+id="menuOverlay"
+></div>
+
+
+<aside
+class="side-menu"
+id="sideMenu"
+>
+
+<div class="menu-top">
+
+<div class="menu-title">
+YASHU FX
+</div>
+
+
+<button
+class="close-menu"
+id="closeMenu"
+>
+×
+</button>
+
+</div>
+
+
+<nav class="menu-links">
+
+<a href="#templates">
+Templates
+</a>
+
+<a href="#about">
+About
+</a>
+
+<a href="#contact">
+Contact
+</a>
+
+</nav>
+
+</aside>
+
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<section
+class="search-section"
+id="search"
+>
+
+<div class="container">
+
+<div class="search-box">
+
+<div class="search-icon">
+⌕
+</div>
+
+
+<input
+class="search-input"
+id="searchInput"
+type="text"
+placeholder="Search templates..."
+>
+
+
+<button
+class="clear-search"
+id="clearSearch"
+>
+Clear
+</button>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TEMPLATES
+===================================================== -->
+
+<section
+class="section"
+id="templates"
+>
+
+<div class="container">
+
+
+<div class="section-heading">
+
+<div>
+
+<div class="section-label">
+Templates
+</div>
+
+<h2>
+Free templates.
+</h2>
+
+</div>
+
+
+<div
+class="result-text"
+id="resultText"
+>
+Loading templates...
+</div>
+
+
+</div>
+
+
+
+<div
+class="cards"
+id="cards"
+>
+
+<div class="loading-message">
+Loading templates...
+</div>
+
+</div>
+
+
+
+<div
+class="no-results"
+id="noResults"
+>
+
+No matching templates found.
+
+<br>
+
+Try another keyword.
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+class="info-section"
+id="about"
+>
+
+<div class="container">
+
+
+<div class="section-label">
+ABOUT
+</div>
+
+
+<h2>
+YASHU FX
+</h2>
+
+
+<p>
+YASHU FX is a simple place for creators
+to discover useful free editing templates
+and start creating faster.
+</p>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+class="info-section"
+id="contact"
+>
+
+<div class="container">
+
+
+<div class="section-label">
+CONTACT
+</div>
+
+
+<h2>
+Get in touch.
+</h2>
+
+
+<p>
+For template suggestions, collaborations
+or other enquiries, contact YASHU FX.
+</p>
+
+
+<p
+style="
+margin-top:15px;
+font-size:13px;
+font-weight:700;
+"
+>
+your-email@example.com
+</p>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container footer">
+
+<div>
+
+<strong>
+YASHU FX
+</strong>
+
+— Free templates for creators.
+
+</div>
+
+
+<div>
+Made for editors • 2026
+</div>
+
+</div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+
+/* =====================================================
+   SUPABASE CONNECTION
+===================================================== */
+
+const SUPABASE_URL =
+"https://wlaytkwkflygzgyekmoh.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_m7dPEfqtawZyonZUOPqCGA_Xw4PlAJt";
+
+
+const supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY
+);
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const cardsContainer =
+document.getElementById("cards");
+
+const resultText =
+document.getElementById("resultText");
+
+const noResults =
+document.getElementById("noResults");
+
+const searchInput =
+document.getElementById("searchInput");
+
+const clearSearch =
+document.getElementById("clearSearch");
+
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHTML(value){
+
+    const div =
+    document.createElement("div");
+
+    div.textContent =
+    String(value ?? "");
+
+    return div.innerHTML;
+
+}
+
+
+
+/* =====================================================
+   CREATE TEMPLATE CARD
+===================================================== */
+
+function createTemplateCard(template){
+
+    const article =
+    document.createElement("article");
+
+
+    article.className =
+    "card searchable";
+
+
+    /* Search data */
+
+    const linkSearchText =
+    Array.isArray(template.links)
+    ? template.links
+        .map(link => link.label || "")
+        .join(" ")
+    : "";
+
+
+    article.dataset.search =
+    [
+        template.title || "",
+        template.category || "",
+        template.description || "",
+        linkSearchText
+    ]
+    .join(" ")
+    .toLowerCase();
+
+
+    /* =================================================
+       LINKS
+    ================================================= */
+
+    const links =
+    Array.isArray(template.links)
+    ? template.links
+    : [];
+
+
+    let linksHTML = "";
+
+
+    links.forEach((link,index)=>{
+
+        if(
+            !link ||
+            !link.label ||
+            !link.url
+        ){
+            return;
+        }
+
+
+        linksHTML += `
+
+        <a
+        href="${escapeHTML(link.url)}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="card-button"
+        >
+
+        ${escapeHTML(link.label)}
+
+        ${index === 0 ? " →" : ""}
+
+        </a>
+
+        `;
+
+    });
+
+
+
+    /* =================================================
+       CARD HTML
+    ================================================= */
+
+    article.innerHTML = `
+
+    <div class="thumbnail">
+
+        ${
+            template.thumbnail_url
+
+            ?
+
+            `
+            <img
+            src="${escapeHTML(template.thumbnail_url)}"
+            alt="${escapeHTML(
+                template.title ||
+                "YASHU FX template"
+            )}"
+            loading="lazy"
+            >
+            `
+
+            :
+
+            `
+            <div class="thumbnail-placeholder">
+            YASHU FX
+            </div>
+            `
+        }
+
+    </div>
+
+
+    <div class="card-body">
+
+
+        <div class="card-top">
+
+            <span class="category">
+
+                ${escapeHTML(
+                    template.category ||
+                    "Other"
+                )}
+
+            </span>
+
+
+            <span class="free">
+                FREE
+            </span>
+
+        </div>
+
+
+        <h3>
+
+            ${escapeHTML(
+                template.title ||
+                "Untitled Template"
+            )}
+
+        </h3>
+
+
+        <p>
+
+            ${escapeHTML(
+                template.description ||
+                "Free editing template for creators."
+            )}
+
+        </p>
+
+
+        <div class="card-links">
+
+            ${linksHTML}
+
+        </div>
+
+
+    </div>
+
+    `;
+
+
+    return article;
+
+}
+
+
+
+/* =====================================================
+   LOAD TEMPLATES FROM SUPABASE
+===================================================== */
+
+async function loadTemplates(){
+
+    cardsContainer.innerHTML = `
+
+        <div class="loading-message">
+
+            Loading templates...
+
+        </div>
+
+    `;
+
+
+    try{
+
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+
+            .from("templates")
+
+            .select("*")
+
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
+
+
+        if(error){
+
+            throw error;
+
+        }
+
+
+        cardsContainer.innerHTML = "";
+
+
+        /* No templates */
+
+        if(
+            !data ||
+            data.length === 0
+        ){
+
+            resultText.textContent =
+            "No templates available yet.";
+
+            noResults.style.display =
+            "block";
+
+            noResults.innerHTML = `
+
+                No templates available yet.
+
+                <br>
+
+                Check back soon.
+
+            `;
+
+            return;
+
+        }
+
+
+        /* Create cards */
+
+        data.forEach(template=>{
+
+            const card =
+            createTemplateCard(template);
+
+            cardsContainer.appendChild(card);
+
+        });
+
+
+        resultText.textContent =
+        `Showing all ${data.length} templates`;
+
+
+        noResults.style.display =
+        "none";
+
+
+        /* Refresh search cards */
+
+        performSearch();
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "YASHU FX TEMPLATE LOAD ERROR:",
+            error
+        );
+
+
+        cardsContainer.innerHTML = "";
+
+
+        resultText.textContent =
+        "Unable to load templates.";
+
+
+        noResults.style.display =
+        "block";
+
+
+        noResults.innerHTML = `
+
+            Unable to load templates.
+
+            <br>
+
+            Please try again later.
+
+        `;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+function performSearch(){
+
+    const cards =
+    Array.from(
+        document.querySelectorAll(
+            ".searchable"
+        )
+    );
+
+
+    const query =
+    searchInput.value
+        .trim()
+        .toLowerCase();
+
+
+    let visibleCount = 0;
+
+
+    cards.forEach(card=>{
+
+        const searchableText =
+        (
+            card.dataset.search +
+            " " +
+            card.innerText
+        )
+        .toLowerCase();
+
+
+        const words =
+        query
+        ? query.split(/\s+/)
+        : [];
+
+
+        const matches =
+        words.every(
+            word =>
+            searchableText.includes(word)
+        );
+
+
+        if(matches){
+
+            card.style.display =
+            "";
+
+            visibleCount++;
+
+        }
+
+        else{
+
+            card.style.display =
+            "none";
+
+        }
+
+    });
+
+
+    /* Result text */
+
+    if(query){
+
+        resultText.textContent =
+        visibleCount +
+        (
+            visibleCount === 1
+            ? " result found"
+            : " results found"
+        );
+
+    }
+
+    else{
+
+        resultText.textContent =
+        `Showing all ${cards.length} templates`;
+
+    }
+
+
+    /* Clear button */
+
+    clearSearch.style.display =
+    query
+    ? "block"
+    : "none";
+
+
+    /* No results */
+
+    noResults.style.display =
+    (
+        visibleCount === 0 &&
+        cards.length > 0
+    )
+    ? "block"
+    : "none";
+
+}
+
+
+
+/* =====================================================
+   SEARCH EVENTS
+===================================================== */
+
+searchInput.addEventListener(
+"input",
+performSearch
+);
+
+
+clearSearch.addEventListener(
+"click",
+function(){
+
+    searchInput.value = "";
+
+    performSearch();
+
+    searchInput.focus();
+
+}
+);
+
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+const menuButton =
+document.getElementById(
+    "menuButton"
+);
+
+const closeMenu =
+document.getElementById(
+    "closeMenu"
+);
+
+const sideMenu =
+document.getElementById(
+    "sideMenu"
+);
+
+const menuOverlay =
+document.getElementById(
+    "menuOverlay"
+);
+
+
+function openMenu(){
+
+    sideMenu.classList.add(
+        "active"
+    );
+
+    menuOverlay.classList.add(
+        "active"
+    );
+
+}
+
+
+function closeSideMenu(){
+
+    sideMenu.classList.remove(
+        "active"
+    );
+
+    menuOverlay.classList.remove(
+        "active"
+    );
+
+}
+
+
+menuButton.addEventListener(
+"click",
+openMenu
+);
+
+
+closeMenu.addEventListener(
+"click",
+closeSideMenu
+);
+
+
+menuOverlay.addEventListener(
+"click",
+closeSideMenu
+);
+
+
+document
+.querySelectorAll(
+    ".menu-links a"
+)
+.forEach(link=>{
+
+    link.addEventListener(
+        "click",
+        closeSideMenu
+    );
+
+});
+
+
+
+/* =====================================================
+   DARK / LIGHT MODE
+===================================================== */
+
+const themeButton =
+document.getElementById(
+    "themeButton"
+);
+
+
+function updateThemeIcon(){
+
+    if(
+        document.body.classList.contains(
+            "dark"
+        )
+    ){
+
+        themeButton.textContent =
+        "☾";
+
+        themeButton.title =
+        "Switch to light mode";
+
+    }
+
+    else{
+
+        themeButton.textContent =
+        "☀";
+
+        themeButton.title =
+        "Switch to dark mode";
+
+    }
+
+}
+
+
+function setTheme(theme){
+
+    if(theme === "dark"){
+
+        document.body.classList.add(
+            "dark"
+        );
+
+    }
+
+    else{
+
+        document.body.classList.remove(
+            "dark"
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "yashuFXTheme",
+        theme
+    );
+
+
+    updateThemeIcon();
+
+}
+
+
+/* Load saved theme */
+
+const savedTheme =
+localStorage.getItem(
+    "yashuFXTheme"
+);
+
+
+if(savedTheme === "dark"){
+
+    document.body.classList.add(
+        "dark"
+    );
+
+}
+
+
+updateThemeIcon();
+
+
+
+/* Toggle theme */
+
+themeButton.addEventListener(
+"click",
+function(){
+
+    const isDark =
+    document.body.classList.contains(
+        "dark"
+    );
+
+
+    setTheme(
+        isDark
+        ? "light"
+        : "dark"
+    );
+
+});
+
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadTemplates();
+
+
+</script>
+
+
+</body>
+
+</html>
