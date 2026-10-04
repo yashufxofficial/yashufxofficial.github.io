@@ -137,6 +137,12 @@ header {
     justify-content: space-between;
 }
 
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 
 /* =====================================================
    MENU BUTTON
@@ -532,6 +538,7 @@ header {
     text-transform: uppercase;
 }
 
+.section h1,
 .section h2 {
     margin-top: 4px;
 
@@ -891,6 +898,7 @@ header {
     padding: 54px 0;
 }
 
+.info-section h1,
 .info-section h2 {
     margin-top: 4px;
 
@@ -1856,6 +1864,7 @@ footer {
         margin-bottom: 18px;
     }
 
+    .section h1,
     .section h2 {
         font-size: 27px;
     }
@@ -1896,6 +1905,7 @@ footer {
         padding: 44px 0;
     }
 
+    .info-section h1,
     .info-section h2 {
         font-size: 25px;
     }
@@ -1941,6 +1951,7 @@ footer {
         gap: 4px;
     }
 
+    .section h1,
     .section h2 {
         font-size: 24px;
     }
@@ -2105,4 +2116,70 @@ footer {
         height: 48px;
     }
 
+}
+
+/* HEADER LANGUAGE TOGGLE */
+
+.language-control {
+    position: relative;
+}
+
+.language-toggle {
+    min-width: 54px;
+    height: 42px;
+
+    border: 1px solid var(--public-border);
+    border-radius: 11px;
+
+    background: var(--public-surface);
+    color: var(--public-text);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.language-toggle:hover,
+.language-toggle[aria-expanded="true"] {
+    border-color: var(--public-accent);
+    background: var(--public-surface-2);
+}
+
+.language-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+
+    z-index: 210;
+    width: 150px;
+    padding: 6px;
+
+    border: 1px solid var(--public-border);
+    border-radius: 12px;
+
+    background: var(--public-surface);
+    box-shadow: 0 12px 30px var(--public-shadow);
+}
+
+.language-option {
+    width: 100%;
+    padding: 9px 10px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--public-text);
+    text-align: left;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.language-option:hover,
+.language-option.active {
+    background: var(--public-surface-2);
+    color: var(--public-accent);
 }
