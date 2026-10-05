@@ -62,6 +62,8 @@ gtag('config', 'G-33VQ73D39H');
 <div class="container navbar">
 
 
+<!-- MENU BUTTON -->
+
 <button
     type="button"
     class="menu-button"
@@ -76,8 +78,10 @@ gtag('config', 'G-33VQ73D39H');
 </button>
 
 
+<!-- LOGO -->
+
 <a
-    href="#"
+    href="index.html"
     class="logo"
     aria-label="YASHU FX Home"
 >
@@ -87,8 +91,41 @@ YASHU <span>FX</span>
 </a>
 
 
+<!-- HEADER RIGHT -->
+
 <div class="header-right">
 
+
+<!-- LANGUAGE -->
+
+<div
+    class="language-control"
+>
+
+<button
+    type="button"
+    class="language-toggle"
+    id="languageToggle"
+    aria-expanded="false"
+    aria-label="Language"
+>
+
+EN⌄
+
+</button>
+
+
+<div
+    class="language-options"
+    id="languageOptions"
+    hidden
+>
+</div>
+
+</div>
+
+
+<!-- THEME -->
 
 <button
     type="button"
@@ -100,6 +137,8 @@ YASHU <span>FX</span>
 ☀
 </button>
 
+
+<!-- LOGO IMAGE -->
 
 <div class="header-image">
 
@@ -161,11 +200,11 @@ YASHU FX
 Templates
 </a>
 
-<a href="#about">
+<a href="about.html">
 About
 </a>
 
-<a href="#contact">
+<a href="contact.html">
 Contact
 </a>
 
@@ -320,11 +359,22 @@ YASHU FX
 </h2>
 
 
-<p>
+<p data-about-primary>
 
 YASHU FX is a simple place for creators
 to discover useful free editing templates
 and start creating faster.
+
+</p>
+
+
+<p
+    data-about-secondary
+>
+
+The goal is to make useful editing resources
+easy to find, simple to access, and completely
+free for creators.
 
 </p>
 
@@ -357,7 +407,7 @@ Get in touch.
 </h2>
 
 
-<p>
+<p data-contact-text>
 
 For template suggestions, collaborations
 or other enquiries, contact YASHU FX.
@@ -424,11 +474,14 @@ Made for editors • 2026
 ></script>
 
 
+
 <!-- =====================================================
      YASHU FX JAVASCRIPT
 ===================================================== -->
 
-<script src="js/script.js"></script>
+<script
+    src="js/script.js"
+></script>
 
 
 </body>
