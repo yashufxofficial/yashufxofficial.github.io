@@ -1,77 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YASHU FX — Free editing templates for creators.">
-    <title>YASHU FX — Free Templates for Creators</title>
-    <link rel="stylesheet" href="css/style.css">
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="description"
+    content="YASHU FX — Free editing templates for creators."
+>
+
+<title>YASHU FX — Free Templates for Creators</title>
+
+<link
+    rel="stylesheet"
+    href="css/style.css"
+>
+
+
+<!-- =====================================================
+     GOOGLE ANALYTICS
+===================================================== -->
+
+<script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-33VQ73D39H"
+></script>
+
+<script>
+
+window.dataLayer = window.dataLayer || [];
+
+function gtag(){
+    dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+
+gtag('config', 'G-33VQ73D39H');
+
+</script>
+
+
 </head>
-<body data-page="home">
-    <header>
-        <div class="container navbar">
-            <div class="header-left">
-                <button type="button" class="menu-button" id="menuButton" aria-label="Open menu"><span></span><span></span><span></span></button>
-                <div class="language-control">
-                    <button type="button" class="language-toggle" id="languageToggle" aria-expanded="false" aria-controls="languageOptions">EN⌄</button>
-                    <div class="language-dropdown" id="languageOptions" hidden></div>
-                </div>
-            </div>
-            <a href="index.html" class="logo" aria-label="YASHU FX Home">YASHU <span>FX</span></a>
-            <div class="header-right">
-                <button type="button" class="theme-button" id="themeButton" aria-label="Switch theme" title="Switch theme">☀</button>
-                <div class="header-image"><img src="assets/logo/logo.png" alt="YASHU FX"></div>
-            </div>
-        </div>
-    </header>
 
-    <div class="menu-overlay" id="menuOverlay"></div>
-    <aside class="side-menu" id="sideMenu" aria-label="Website menu">
-        <div class="menu-top">
-            <div class="menu-title">YASHU FX</div>
-            <button type="button" class="close-menu" id="closeMenu" aria-label="Close menu">×</button>
-        </div>
-        <nav class="menu-links">
-            <a href="index.html">Templates</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </aside>
 
-    <main>
-        <section class="search-section" aria-label="Template search">
-            <div class="container">
-                <div class="search-box">
-                    <div class="search-icon" aria-hidden="true">⌕</div>
-                    <input class="search-input" id="searchInput" type="search" placeholder="Search templates..." autocomplete="off">
-                    <button type="button" class="clear-search" id="clearSearch">Clear</button>
-                </div>
-            </div>
-        </section>
+<body>
 
-        <section class="section" id="templates">
-            <div class="container">
-                <div class="section-heading">
-                    <div>
-                        <div class="section-label">Templates</div>
-                        <h1>Free templates.</h1>
-                    </div>
-                    <div class="result-text" id="resultText">Loading templates...</div>
-                </div>
-                <div class="cards" id="cards"><div class="loading-message">Loading templates...</div></div>
-                <div class="no-results" id="noResults">No matching templates found.<br>Try another keyword.</div>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <div class="container footer">
-            <div><strong>YASHU FX</strong> — Free templates for creators.</div>
-            <div>Made for editors • 2026</div>
-        </div>
-    </footer>
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/script.js"></script>
+<header>
+
+<div class="container navbar">
+
+
+<button
+    type="button"
+    class="menu-button"
+    id="menuButton"
+    aria-label="Open menu"
+>
+
+<span></span>
+<span></span>
+<span></span>
+
+</button>
+
+
+<a
+    href="#"
+    class="logo"
+    aria-label="YASHU FX Home"
+>
+
+YASHU <span>FX</span>
+
+</a>
+
+
+<div class="header-right">
+
+
+<button
+    type="button"
+    class="theme-button"
+    id="themeButton"
+    aria-label="Switch theme"
+    title="Switch theme"
+>
+☀
+</button>
+
+
+<div class="header-image">
+
+<img
+    src="assets/logo/logo.png"
+    alt="YASHU FX"
+>
+
+</div>
+
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
+
+<div
+    class="menu-overlay"
+    id="menuOverlay"
+></div>
+
+
+<aside
+    class="side-menu"
+    id="sideMenu"
+    aria-label="Website menu"
+>
+
+
+<div class="menu-top">
+
+<div class="menu-title">
+YASHU FX
+</div>
+
+
+<button
+    type="button"
+    class="close-menu"
+    id="closeMenu"
+    aria-label="Close menu"
+>
+×
+</button>
+
+</div>
+
+
+<nav class="menu-links">
+
+<a href="#templates">
+Templates
+</a>
+
+<a href="#about">
+About
+</a>
+
+<a href="#contact">
+Contact
+</a>
+
+</nav>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<section
+    class="search-section"
+    id="search"
+>
+
+<div class="container">
+
+
+<div class="search-box">
+
+
+<div
+    class="search-icon"
+    aria-hidden="true"
+>
+⌕
+</div>
+
+
+<input
+    class="search-input"
+    id="searchInput"
+    type="search"
+    autocomplete="off"
+    placeholder="Search templates..."
+    aria-label="Search templates"
+>
+
+
+<button
+    type="button"
+    class="clear-search"
+    id="clearSearch"
+>
+Clear
+</button>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TEMPLATES
+===================================================== -->
+
+<section
+    class="section"
+    id="templates"
+>
+
+<div class="container">
+
+
+<div class="section-heading">
+
+
+<div>
+
+<div class="section-label">
+Templates
+</div>
+
+
+<h2>
+Free templates.
+</h2>
+
+</div>
+
+
+<div
+    class="result-text"
+    id="resultText"
+>
+Loading templates...
+</div>
+
+
+</div>
+
+
+<div
+    class="cards"
+    id="cards"
+>
+
+<div class="loading-message">
+Loading templates...
+</div>
+
+</div>
+
+
+<div
+    class="no-results"
+    id="noResults"
+>
+
+No matching templates found.
+
+<br>
+
+Try another keyword.
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+    class="info-section"
+    id="about"
+>
+
+<div class="container">
+
+
+<div class="section-label">
+ABOUT
+</div>
+
+
+<h2>
+YASHU FX
+</h2>
+
+
+<p>
+
+YASHU FX is a simple place for creators
+to discover useful free editing templates
+and start creating faster.
+
+</p>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+    class="info-section"
+    id="contact"
+>
+
+<div class="container">
+
+
+<div class="section-label">
+CONTACT
+</div>
+
+
+<h2>
+Get in touch.
+</h2>
+
+
+<p>
+
+For template suggestions, collaborations
+or other enquiries, contact YASHU FX.
+
+</p>
+
+
+<p
+    style="
+        margin-top:15px;
+        font-size:13px;
+        font-weight:700;
+    "
+>
+
+your-email@example.com
+
+</p>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container footer">
+
+
+<div>
+
+<strong>
+YASHU FX
+</strong>
+
+— Free templates for creators.
+
+</div>
+
+
+<div>
+Made for editors • 2026
+</div>
+
+
+</div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<!-- =====================================================
+     YASHU FX JAVASCRIPT
+===================================================== -->
+
+<script src="js/script.js"></script>
+
+
 </body>
+
 </html>
