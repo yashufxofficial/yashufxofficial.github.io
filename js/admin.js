@@ -65,6 +65,9 @@ const categoryInput =
 const descriptionInput =
   document.getElementById("description");
 
+const aiPromptInput =
+  document.getElementById("aiPrompt");
+
 
 // ========================================
 // EDIT STATE
@@ -463,6 +466,9 @@ function resetTemplateForm() {
 
   templateForm.reset();
 
+  if (aiPromptInput) {
+    aiPromptInput.value = "";
+  }
 
   thumbnailInput.required = true;
 
@@ -615,6 +621,11 @@ function editTemplate(template) {
 
   descriptionInput.value =
     template.description || "";
+
+  if (aiPromptInput) {
+    aiPromptInput.value =
+      template.ai_prompt || "";
+  }
 
 
   // --------------------------------
@@ -1121,6 +1132,9 @@ templateForm.addEventListener(
     const description =
       descriptionInput.value.trim();
 
+    const aiPrompt =
+      aiPromptInput ? aiPromptInput.value.trim() : "";
+
 
     const links =
       collectLinks();
@@ -1331,6 +1345,7 @@ templateForm.addEventListener(
               title: title,
               category: category,
               description: description,
+              ai_prompt: aiPrompt,
               thumbnail_url: newThumbnailURL,
               thumbnail_path: newThumbnailPath,
               links: links,
@@ -1501,6 +1516,7 @@ templateForm.addEventListener(
             title: title,
             category: category,
             description: description,
+            ai_prompt: aiPrompt,
             thumbnail_url: thumbnailURL,
             thumbnail_path: filePath,
             links: links
