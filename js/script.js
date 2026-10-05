@@ -512,6 +512,26 @@ function applyLanguage() {
 
     createLanguageMenu();
 
+    /* Refresh result text */
+
+if (resultText) {
+
+    if (
+        searchInput &&
+        searchInput.value.trim()
+    ) {
+
+        performSearch();
+
+    } else {
+
+        resultText.textContent =
+            t.showingAll;
+
+    }
+
+}
+
     /* Refresh empty/loading text */
 
     if (
