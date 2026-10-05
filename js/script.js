@@ -83,6 +83,10 @@ const translations = {
         madeFor: "Made for editors",
 
         useTemplate: "Use Template →",
+        aiPrompt: "AI Prompt",
+        copyPrompt: "Copy Prompt",
+        copied: "Copied!",
+        close: "Close",
         freeLabel: "FREE",
         resultFound: "result found",
         resultsFound: "results found",
@@ -119,6 +123,10 @@ const translations = {
         madeFor: "ಎಡಿಟರ್‌ಗಳಿಗಾಗಿ",
 
         useTemplate: "ಟೆಂಪ್ಲೇಟ್ ಬಳಸಿ →",
+        aiPrompt: "AI ಪ್ರಾಂಪ್ಟ್",
+        copyPrompt: "ಪ್ರಾಂಪ್ಟ್ ನಕಲಿಸಿ",
+        copied: "ನಕಲಿಸಲಾಗಿದೆ!",
+        close: "ಮುಚ್ಚಿ",
         freeLabel: "ಉಚಿತ",
         resultFound: "ಫಲಿತಾಂಶ ಕಂಡುಬಂದಿದೆ",
         resultsFound: "ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದಿವೆ",
@@ -155,6 +163,10 @@ const translations = {
         madeFor: "எடிட்டர்களுக்காக",
 
         useTemplate: "டெம்ப்ளேட்டை பயன்படுத்தவும் →",
+        aiPrompt: "AI ப்ராம்ப்ட்",
+        copyPrompt: "ப்ராம்ப்டை நகலெடு",
+        copied: "நகலெடுக்கப்பட்டது!",
+        close: "மூடு",
         freeLabel: "இலவசம்",
         resultFound: "முடிவு கிடைத்தது",
         resultsFound: "முடிவுகள் கிடைத்தன",
@@ -191,6 +203,10 @@ const translations = {
         madeFor: "ఎడిటర్ల కోసం",
 
         useTemplate: "టెంప్లేట్ ఉపయోగించండి →",
+        aiPrompt: "AI ప్రాంప్ట్",
+        copyPrompt: "ప్రాంప్ట్ కాపీ చేయండి",
+        copied: "కాపీ అయింది!",
+        close: "మూసివేయి",
         freeLabel: "ఉచితం",
         resultFound: "ఫలితం కనుగొనబడింది",
         resultsFound: "ఫలితాలు కనుగొనబడ్డాయి",
@@ -227,6 +243,10 @@ const translations = {
         madeFor: "एडिटर्स के लिए",
 
         useTemplate: "टेम्पलेट इस्तेमाल करें →",
+        aiPrompt: "AI प्रॉम्प्ट",
+        copyPrompt: "प्रॉम्प्ट कॉपी करें",
+        copied: "कॉपी हो गया!",
+        close: "बंद करें",
         freeLabel: "मुफ़्त",
         resultFound: "परिणाम मिला",
         resultsFound: "परिणाम मिले",
@@ -618,6 +638,10 @@ function createTemplateCard(template) {
             : "";
 
 
+    if (template.ai_prompt) {
+        article.dataset.aiPrompt = template.ai_prompt;
+    }
+
     article.dataset.search = [
 
         template.title || "",
@@ -727,6 +751,17 @@ function createTemplateCard(template) {
             <div class="card-links">
                 ${linksHTML}
             </div>
+            ${template.ai_prompt
+                ? `
+                    <button
+                        type="button"
+                        class="ai-prompt-button"
+                    >
+                        ${escapeHTML(translations[currentLanguage].aiPrompt)}
+                    </button>
+                `
+                : ""
+            }
 
         </div>
     `;
@@ -736,6 +771,98 @@ function createTemplateCard(template) {
 }
 
 
+/* =====================================================
+   AI PROMPT VIEWER
+===================================================== */
+
+function showAIPrompt(prompt) {
+    const t = translations[currentLanguage];
+    const overlay = document.createElement("div");
+    overlay.className = "ai-prompt-overlay";
+
+    const dialog = document.createElement("section");
+    dialog.className = "ai-prompt-modal";
+    dialog.setAttribute("role", "dialog");
+    dialog.setAttribute("aria-modal", "true");
+    dialog.setAttribute("aria-labelledby", "aiPromptTitle");
+
+    const heading = document.createElement("h2");
+    heading.id = "aiPromptTitle";
+    heading.textContent = t.aiPrompt;
+
+    const promptText = document.createElement("pre");
+    promptText.className = "ai-prompt-text";
+    promptText.textContent = prompt;
+
+    const copyButton = document.createElement("button");
+    copyButton.type = "button";
+    copyButton.className = "ai-prompt-copy";
+    copyButton.textContent = t.copyPrompt;
+
+    const closeButton = document.createElement("button");
+    closeButton.type = "button";
+    closeButton.className = "ai-prompt-close";
+    closeButton.textContent = t.close;
+
+    const actions = document.createElement("div");
+    actions.className = "ai-prompt-actions";
+    actions.append(copyButton, closeButton);
+    dialog.append(heading, promptText, actions);
+    overlay.appendChild(dialog);
+    document.body.appendChild(overlay);
+
+    const close = () => {
+        document.removeEventListener("keydown", onKeydown);
+        overlay.remove();
+    };
+    const onKeydown = event => {
+        if (event.key === "Escape") close();
+    };
+
+    closeButton.addEventListener("click", close);
+    overlay.addEventListener("click", event => {
+        if (event.target === overlay) close();
+    });
+    document.addEventListener("keydown", onKeydown);
+
+    copyButton.addEventListener("click", async () => {
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(prompt);
+            } else {
+                const copyArea = document.createElement("textarea");
+                copyArea.value = prompt;
+                copyArea.style.position = "fixed";
+                copyArea.style.opacity = "0";
+                document.body.appendChild(copyArea);
+                copyArea.select();
+                const copied = document.execCommand("copy");
+                copyArea.remove();
+                if (!copied) throw new Error("Copy failed");
+            }
+            copyButton.textContent = t.copied;
+            window.setTimeout(() => {
+                if (copyButton.isConnected) {
+                    copyButton.textContent = t.copyPrompt;
+                }
+            }, 1800);
+        } catch (error) {
+            console.error("AI prompt copy error:", error);
+        }
+    });
+
+    closeButton.focus();
+}
+
+if (cardsContainer) {
+    cardsContainer.addEventListener("click", event => {
+        const button = event.target.closest(".ai-prompt-button");
+        if (!button || !cardsContainer.contains(button)) return;
+        const card = button.closest(".card");
+        const prompt = card && card.dataset.aiPrompt;
+        if (prompt) showAIPrompt(prompt);
+    });
+}
 /* =====================================================
    LOAD TEMPLATES
 ===================================================== */
