@@ -859,22 +859,28 @@ async function loadTemplates() {
 
         <div class="admin-template-actions">
 
-          <button
-            type="button"
-            class="edit-template-button"
-          >
-            Edit
-          </button>
+  <button
+    type="button"
+    class="pin-template-button"
+  >
+    ${template.pinned ? "📌 Unpin" : "📌 Pin"}
+  </button>
 
-          <button
-            type="button"
-            class="delete-template-button"
-          >
-            Delete
-          </button>
+  <button
+    type="button"
+    class="edit-template-button"
+  >
+    Edit
+  </button>
 
-        </div>
-      `;
+  <button
+    type="button"
+    class="delete-template-button"
+  >
+    Delete
+  </button>
+
+</div>
 
 
       // --------------------------------
