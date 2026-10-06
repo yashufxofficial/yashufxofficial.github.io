@@ -1,10 +1,14 @@
 const SUPABASE_URL = "https://wlaytkwkflygzgyekmoh.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_m7dPEfqtawZyonZUOPqCGA_Xw4PlAJt";
 
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
+const supabaseClient =
+  window.supabase &&
+  typeof window.supabase.createClient === "function"
+    ? window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      )
+    : null;
 
 
 // ========================================
