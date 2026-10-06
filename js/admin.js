@@ -902,6 +902,58 @@ async function loadTemplates() {
         }
       );
 
+// --------------------------------
+// PIN / UNPIN
+// --------------------------------
+
+const pinButton =
+  item.querySelector(
+    ".pin-template-button"
+  );
+
+pinButton.addEventListener(
+  "click",
+  async () => {
+
+    pinButton.disabled = true;
+
+    const newPinnedState =
+      !template.pinned;
+
+    const { error } =
+      await supabaseClient
+        .from("templates")
+        .update({
+          pinned: newPinnedState,
+          updated_at:
+            new Date().toISOString()
+        })
+        .eq(
+          "id",
+          template.id
+        );
+
+    if (error) {
+
+      console.error(
+        "PIN TEMPLATE ERROR:",
+        error
+      );
+
+      alert(
+        "Unable to update pin status."
+      );
+
+      pinButton.disabled = false;
+
+      return;
+    }
+
+    await loadTemplates();
+
+  }
+);
+
 
       // --------------------------------
       // DELETE
