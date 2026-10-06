@@ -887,9 +887,12 @@ async function loadTemplates() {
         await supabaseClient
             .from("templates")
             .select("*")
-            .order("created_at", {
-                ascending: false
-            });
+            .order("pinned", {
+    ascending: false
+})
+.order("created_at", {
+    ascending: false
+});
 
 
     if (error) {
