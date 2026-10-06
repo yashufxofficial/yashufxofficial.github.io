@@ -1760,6 +1760,69 @@ footer {
     color: #ffffff;
 }
 
+/* =====================================================
+   PIN / UNPIN BUTTON
+===================================================== */
+
+.pin-template-button {
+    appearance: none;
+
+    border: 1px solid #ddddE3;
+
+    background: #ffffff;
+
+    color: #7c3aed;
+
+    padding: 9px 14px;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.pin-template-button:hover {
+    background: #7c3aed;
+
+    border-color: #7c3aed;
+
+    color: #ffffff;
+}
+
+
+.pin-template-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* =====================================================
+   MOBILE — PIN BUTTON
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .pin-template-button {
+        width: 100%;
+
+        min-height: 40px;
+
+        padding: 8px 10px;
+
+        font-size: 12px;
+    }
+
+}
+
 
 /* =====================================================
    DELETE BUTTON
