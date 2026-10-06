@@ -1185,6 +1185,23 @@ if (searchInput) {
     );
 }
 
+/* =====================================================
+   CLEAR SEARCH
+===================================================== */
+
+if (clearSearch) {
+
+    clearSearch.addEventListener("click", () => {
+
+        searchInput.value = "";
+
+        performSearch();
+
+        searchInput.focus();
+
+    });
+
+}
 
 /* =====================================================
    DARK / LIGHT MODE
