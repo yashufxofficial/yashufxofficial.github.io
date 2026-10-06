@@ -153,31 +153,52 @@ loginForm.addEventListener(
       "#77777f";
 
 
-    const { error } =
-      await supabaseClient.auth.signInWithPassword({
-        email,
-        password
-      });
+    try {
+
+      const { error } =
+        await supabaseClient.auth.signInWithPassword({
+          email,
+          password
+        });
 
 
-    if (error) {
+      if (error) {
+
+        loginMessage.textContent =
+          error.message ||
+          "Incorrect email or password.";
+
+        loginMessage.style.color =
+          "#d14343";
+
+        return;
+
+      }
+
+
+      loginMessage.textContent = "";
+
+      showDashboard();
+
+      loadTemplates();
+
+    }
+
+    catch (error) {
+
+      console.error(
+        "YASHU FX LOGIN ERROR:",
+        error
+      );
 
       loginMessage.textContent =
-        "Incorrect email or password.";
+        error.message ||
+        "Unable to sign in.";
 
       loginMessage.style.color =
         "#d14343";
 
-      return;
-
     }
-
-
-    loginMessage.textContent = "";
-
-    showDashboard();
-
-    loadTemplates();
 
   }
 );
@@ -770,6 +791,12 @@ async function loadTemplates() {
     .from("templates")
     .select("*")
     .order(
+      "pinned",
+      {
+        ascending: false
+      }
+    )
+    .order(
       "created_at",
       {
         ascending: false
@@ -881,7 +908,60 @@ async function loadTemplates() {
   </button>
 
 </div>
+`;
 
+      // --------------------------------
+      // PIN / UNPIN
+      // --------------------------------
+
+      const pinButton =
+        item.querySelector(
+          ".pin-template-button"
+        );
+
+      pinButton.addEventListener(
+        "click",
+        async () => {
+
+          pinButton.disabled = true;
+
+          const nextPinned = !template.pinned;
+
+          const { error: pinError } =
+            await supabaseClient
+              .from("templates")
+              .update({
+                pinned: nextPinned,
+                updated_at:
+                  new Date().toISOString()
+              })
+              .eq(
+                "id",
+                template.id
+              );
+
+          if (pinError) {
+
+            console.error(
+              "PIN TEMPLATE ERROR:",
+              pinError
+            );
+
+            templateMessage.textContent =
+              pinError.message ||
+              "Unable to update pin.";
+
+            templateMessage.style.color =
+              "#d14343";
+
+            pinButton.disabled = false;
+            return;
+          }
+
+          await loadTemplates();
+
+        }
+      );
 
       // --------------------------------
       // EDIT
@@ -901,58 +981,6 @@ async function loadTemplates() {
 
         }
       );
-
-// --------------------------------
-// PIN / UNPIN
-// --------------------------------
-
-const pinButton =
-  item.querySelector(
-    ".pin-template-button"
-  );
-
-pinButton.addEventListener(
-  "click",
-  async () => {
-
-    pinButton.disabled = true;
-
-    const newPinnedState =
-      !template.pinned;
-
-    const { error } =
-      await supabaseClient
-        .from("templates")
-        .update({
-          pinned: newPinnedState,
-          updated_at:
-            new Date().toISOString()
-        })
-        .eq(
-          "id",
-          template.id
-        );
-
-    if (error) {
-
-      console.error(
-        "PIN TEMPLATE ERROR:",
-        error
-      );
-
-      alert(
-        "Unable to update pin status."
-      );
-
-      pinButton.disabled = false;
-
-      return;
-    }
-
-    await loadTemplates();
-
-  }
-);
 
 
       // --------------------------------
