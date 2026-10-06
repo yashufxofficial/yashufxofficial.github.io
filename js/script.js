@@ -1184,35 +1184,6 @@ if (searchInput) {
     );
 }
 
-    searchInput.addEventListener(
-        "keydown",
-        event => {
-
-            if (event.key === "Enter") {
-                event.preventDefault();
-                performSearch();
-            }
-
-        }
-    );
-}
-
-
-if (clearSearch) {
-
-    clearSearch.addEventListener(
-        "click",
-        () => {
-
-            searchInput.value = "";
-
-            performSearch();
-
-            searchInput.focus();
-        }
-    );
-}
-
 
 /* =====================================================
    DARK / LIGHT MODE
