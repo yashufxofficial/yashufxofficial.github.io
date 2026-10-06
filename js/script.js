@@ -1167,6 +1167,24 @@ if (searchInput) {
     );
 
     searchInput.addEventListener(
+        "search",
+        performSearch
+    );
+
+    searchInput.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Enter") {
+                event.preventDefault();
+                performSearch();
+            }
+
+        }
+    );
+}
+
+    searchInput.addEventListener(
         "keydown",
         event => {
 
