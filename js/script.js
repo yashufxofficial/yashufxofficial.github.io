@@ -1176,9 +1176,10 @@ if (searchInput) {
         event => {
 
             if (event.key === "Enter") {
-                event.preventDefault();
-                performSearch();
-            }
+    event.preventDefault();
+    performSearch();
+    searchInput.blur();
+}
 
         }
     );
